@@ -1,0 +1,36 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	{#- Счётчик количества страниц: -#}
+	{%- set pages = 0 -%}
+	{%- for item in collections.all -%}
+	{%- if item.url and item.data.layout and noindex != true -%}
+	{%- set pages = pages + 1 -%}
+	{%- endif %}
+	{%- endfor %}
+	<!--
+	Всего страниц на сайте: {{ collections.all.length }}
+	Страниц в sitemap: {{ pages }}
+	-->
+
+	{%- for item in collections.all %}
+	{%- if item.url and item.data.layout and noindex != true %}
+
+	<url>
+		<loc>{{ _site.link + item.url }}</loc>
+		<priority>1</priority>
+
+		{%- if _site.name.en %}
+		<xhtml:link rel="alternate" hreflang="{{ item.page.lang }}" href="{{ _site.link + item.url }}"/>
+		{%- for item2 in item.url | locale_links %}
+		<xhtml:link rel="alternate" hreflang="{{ item2.lang }}" href="{{ _site.link + item2.url }}"/>
+		{%- endfor %}
+		{%- endif %}
+	</url>
+
+	{%- endif %}
+	{%- endfor %}
+</urlset>

@@ -1,0 +1,31 @@
+<header class="header container">
+	<a class="brand header__brand" href="/">
+		<svg aria-hidden="true">
+			<use href="/img/sprite.svg#logo"></use>
+		</svg>
+		<span>{{ _site.header.brand }}</span>
+	</a>
+
+
+
+
+	<button class="theme-toggle" id="theme-toggle" type="button" title="Переключатель цветовой темы" aria-label="auto" aria-live="polite" data-soundist="/fls/button-interior.mp3" data-volume="42">
+		<span class="theme-toggle__icon"></span>
+	</button>
+
+
+
+
+
+	<ul class="social">
+		<li><a class="social__tel" href="tel:{{ _site.tel }}">{{ _site.tel }}</a></li>
+
+		<li><a class="social__link whatsapp" target="_blank" rel="noopener" href="{{ _site.whatsapp }}" aria-label="whatsapp" title="whatsapp"></a></li>
+
+		<li><a class="social__link instagram" target="_blank" rel="noopener" href="{{ _site.instagram }}" aria-label="instagram" title="instagram"></a></li>
+
+		<li><a class="social__link telegram" target="_blank" rel="noopener" href="{{ _site.telegram }}" aria-label="telegram" title="telegram"></a></li>
+
+		{#<li><a class="social__link vkontakte" target="_blank" rel="noopener" href="{{ _site.tel }}" aria-label="vkontakte" title="vkontakte"></a></li>#}
+	</ul>
+</header>

@@ -1,0 +1,356 @@
+---
+layout: _page-base.njk
+---
+
+<!-- Первый экран: -->
+<section class="section-firstscreen">
+	<div class="hero container">
+		<div class="hero__img">
+			<img fetchpriority="high" width="300" height="150" src="{{ firstscreen.img }}" alt="{{ firstscreen.alt }}">
+
+			<button class="hero__audio audio" type="button" data-soundist="{{ firstscreen.audio }}" data-pause data-volume="20" aria-label="Аудио-приветствие">
+				{% include "_block-audio-svg.njk" %}
+				<!--<svg class="audio__svg" aria-hidden="true">
+					<use href="/img/sprite.svg#audio"></use>
+				</svg>-->
+			</button>
+		</div>
+
+		<!-- <h1 class="hero__h1">Городской аудиоспектакль <span class="hero__h1-cursive">В трёх частях</span></h1> -->
+		<h1 class="hero__h1">{{ firstscreen.heading | safe }}</h1>
+
+		<p class="hero__subtitle mb-s">{{ firstscreen.text }}</p>
+
+		<div class="hero__buttons">
+			<a class="button" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ firstscreen.buttonText }}</a>
+
+			<a class="button button--2" target="_blank" rel="noopener" href="{{ _site.telegramPhotos }}">{{ firstscreen.button2Text | safe }}</a>
+		</div>
+	</div>
+
+
+	<div class="section-facts container reverse-colors">
+		<ul class="facts">
+			{% for item in firstscreen.facts %}
+			<li class="facts__card">
+				<span class="facts__big">{{ item.big }}</span>
+				<span class="facts__text">{{ item.text }}</span>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+
+
+
+
+<!-- Расписание: -->
+<section class="section container">
+
+	<h2 class="h2" id="schedule">{{ schedule.heading }}</h2>
+
+	<p class="subtitle">{{ schedule.text }}</p>
+
+
+	<ul class="schedule">
+		{% for item in schedule.cards %}
+		<li class="schedule__card">
+			<div class="schedule__rounding"></div>
+
+			<img class="schedule__img" src="{{ item.img }}" alt="{{ item.alt }}">
+
+			<div class="schedule__content">
+				<h3 class="schedule__title">{{ item.title | safe }}</h3>
+				<p class="schedule__text">{{ item.text | safe }}</p>
+				<div class="schedule__box">
+					<p class="schedule__price">{{ item.price }}</p>
+					<a class="schedule__button-2" href="{{ item.link2 }}">{{ item.button2 }}</a>
+				</div>
+				<a class="schedule__button" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ item.button }}</a>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+
+
+
+
+<!-- Описание маршрутов: -->
+<section class="section container">
+	<h2 class="h2" id="routes">{{ routes.heading }}</h2>
+
+
+	<div class="statement">
+		<p class="statement__text">{{ routes.text }}</p>
+		<img class="statement__img" width="70" height="70" src="/img/author.jpg" alt="Лицо автора променада">
+		<p class="statement__author">{{ routes.author | safe }}</p>
+	</div>
+
+
+	<!-- Маршрут №1: -->
+	<h3 class="h2" id="route1">{{ route1.heading }}</h3>
+	<p class="mb-s">{{ route1.text }}</p>
+	<div class="route mb-l">
+		<div class="route__content">
+			<p class="route__title">{{ route1.title }}</p>
+			<p class="route__list">
+				{% for item in route1.list %}
+				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="route__media">
+			<div class="uk-slider uk-slider--pictures" data-uk-slider="">
+				<div class="uk-slider-container">
+					<ul class="uk-slider-items pictures">
+						{% for item in route1.slider %}
+						<li class="pictures__card">
+							<img width="630" height="420" src="{{ item.img }}" alt="">
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<a class="uk-slider-left" href data-uk-slider-item="previous"></a>
+				<a class="uk-slider-right" href data-uk-slider-item="next"></a>
+
+				<!-- Автоматическое создание пагинации: -->
+				{# <ul class="uk-slider-nav"></ul> #}
+			</div>
+
+
+			<div class="route__audio">
+				<button class="audio" type="button" data-soundist="{{ route1.audio }}" data-pause data-volume="27" aria-labelledby="voice-1">
+					{% include "_block-audio-svg.njk" %}
+				</button>
+
+				<p id="voice-1">{{ route1.audioText }}</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Маршрут №2: -->
+	<h3 class="h2" id="route2">{{ route2.heading }}</h3>
+	<p class="mb-s">{{ route2.text }}</p>
+	<div class="route mb-l">
+		<div class="route__content">
+			<p class="route__title">{{ route2.title }}</p>
+			<p class="route__list">
+				{% for item in route2.list %}
+				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="route__media">
+			<div class="uk-slider uk-slider--pictures" data-uk-slider="">
+				<div class="uk-slider-container">
+					<ul class="uk-slider-items pictures">
+						{% for item in route2.slider %}
+						<li class="pictures__card">
+							<img width="630" height="420" src="{{ item.img }}" alt="">
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<a class="uk-slider-left" href data-uk-slider-item="previous"></a>
+				<a class="uk-slider-right" href data-uk-slider-item="next"></a>
+
+				<!-- Автоматическое создание пагинации: -->
+				{# <ul class="uk-slider-nav"></ul> #}
+			</div>
+
+
+			<div class="route__audio">
+				<button class="audio" type="button" data-soundist="{{ route2.audio }}" data-pause data-volume="27" aria-labelledby="voice-1">
+					{% include "_block-audio-svg.njk" %}
+				</button>
+
+				<p id="voice-1">{{ route2.audioText }}</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Маршрут №3: -->
+	<h3 class="h2" id="route3">{{ route3.heading }}</h3>
+	<p class="mb-s">{{ route3.text }}</p>
+	<div class="route mb-l">
+		<div class="route__content">
+			<p class="route__title">{{ route3.title }}</p>
+			<p class="route__list">
+				{% for item in route3.list %}
+				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="route__media">
+			<div class="uk-slider uk-slider--pictures" data-uk-slider="">
+				<div class="uk-slider-container">
+					<ul class="uk-slider-items pictures">
+						{% for item in route3.slider %}
+						<li class="pictures__card">
+							<img width="630" height="420" src="{{ item.img }}" alt="">
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<a class="uk-slider-left" href data-uk-slider-item="previous"></a>
+				<a class="uk-slider-right" href data-uk-slider-item="next"></a>
+
+				<!-- Автоматическое создание пагинации: -->
+				{# <ul class="uk-slider-nav"></ul> #}
+			</div>
+
+
+			<div class="route__audio">
+				<button class="audio" type="button" data-soundist="{{ route3.audio }}" data-pause data-volume="27" aria-labelledby="voice-1">
+					{% include "_block-audio-svg.njk" %}
+				</button>
+
+				<p id="voice-1">{{ route3.audioText }}</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Маршрут №4: -->
+	<h3 class="h2" id="route4">{{ route4.heading }}</h3>
+	<div class="route-4 mb-l">
+		<p class="route-4__text">{{ route4.text }}</p>
+	</div>
+
+
+
+
+	<!-- Маршрут №5: -->
+	<h3 class="h2" id="route5">{{ route5.heading }}</h3>
+	<div class="route-5 mb-l">
+		<p class="route-4__text">{{ route5.text }}</p>
+	</div>
+
+
+
+
+	<div class="before-after">
+		<div class="before-after__img">
+			<!--<p class="before-after__img-desc">Современная карта Красноярска</p>-->
+			<img width="1300" height="600" src="/img/map-new.png" alt="Новая карта Красноярска 2023г.">
+		</div>
+
+		<div class="before-after__img before-after__img--before">
+			<!--<p class="before-after__img-desc before-after__img-desc--before">Планъ Губернскаго города Красноярска 1906 г.</p>-->
+			<img width="1300" height="600" src="/img/map-old.jpg" alt="Старая карта Красноярска 1906г.">
+		</div>
+
+		<span class="before-after__geo" title="Место проведения маршрута №1">1</span>
+		<span class="before-after__geo" title="Место проведения маршрута №2">2</span>
+		<span class="before-after__geo" title="Место проведения маршрута №3">3</span>
+
+		<input class="before-after__range" type="range" min="0" max="100" value="50" aria-label="Сколько процентов первого изображения показывается">
+
+		<div class="before-after__thumb" aria-hidden="true"></div>
+	</div>
+</section>
+
+
+
+
+<!-- О проекте: -->
+<section class="section container">
+	<h2 class="h2" id="about">{{ about.heading }}</h2>
+
+
+	<div class="article mb-l">
+		<div class="article__content">
+			<h3 class="h3">{{ about.title }}</h3>
+
+			{% for item in about.list %}
+			<p>{{ item.text + ' – ' }}<em>{{ item.name }}</em></p>
+			{% endfor %}
+
+			<p>Автор, сценарист, режиссёр спектаклей – <em>Валентина Чигрина</em></p>
+			<p>Звукорежиссёр – <em>Максим Старков</em></p>
+			<p>Корректор – <em>Василий Прокушев</em></p>
+			<p>Консультант – <em>Наталья Можайцева</em></p>
+			<p>Сайт – <em>Олег Миторун</em></p>
+		</div>
+
+
+		<img class="article__img" src="{{ about.img }}" alt="{{ about.alt }}">
+	</div>
+
+
+
+
+	<h3 class="h3">{{ about.partners.heading }}</h3>
+
+	<ul class="partners">
+		{% for item in about.partners.list %}
+		<li class="partners__card">{{ item.text }}</li>
+		{% endfor %}
+	</ul>
+</section>
+
+
+
+
+<!-- Отзывы: -->
+<!--<section class="section container">
+	<h2 class="h2" id="reviews">Отзывы</h2>
+</section>-->
+
+
+
+
+<!-- Вопросы и ответы: -->
+<section class="section container">
+	<h2 class="h2">{{ faq.heading }}</h2>
+
+
+	<div class="faq-grid">
+		<ul class="uk-accordion" data-uk-accordion="multiple: true">
+			{% for item in faq.list %}
+			<li class="uk-accordion__card">
+				<a class="uk-accordion-title" href>{{ item.title }}</a>
+				<div class="uk-accordion-content">
+					<p>{{ item.text }}</p>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+
+
+		<img class="faq-grid__img" width="300" height="400" src="{{ faq.img }}" alt="{{ faq.alt }}">
+	</div>
+</section>
+
+
+
+
+<!-- Контакты: -->
+<section class="section-contacts container">
+	<h2 class="h2" id="contacts">{{ contacts.heading }}</h2>
+
+	<p class="subtitle mb-l">{{ contacts.text }}</p>
+
+	<div class="contacts">
+		<a class="button" href="{{ contacts.link }}">{{ contacts.button }}</a>
+
+		<img class="contacts__img" src="/img/mobile.png" alt="Мокап смартфона с записью на променад через Whatsapp">
+	</div>
+
+
+</section>

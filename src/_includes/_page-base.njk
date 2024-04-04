@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{ lang or _site.lang or 'ru' }}" {% if dir %}dir="{{ dir }}"{% endif %} prefix="og: https://ogp.me/ns#">
+<head>
+	{%- if _site.noindex == true or noindex == true %}
+	<meta name="robots" content="noindex, nofollow">
+	{%- endif %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+
+	<!-- Скрипт переключения цветовых тем. Он должен быть подключен и запуститься как можно скорее, чтобы избежать мигания тем: -->
+	<script>
+		// Скрипт для переключателя темы сайта из статьи https://web.dev/building-a-theme-switch-component/
+		// Этот скрипт лучше располагать так, чтобы он загружался и срабатывал как можно скорее, чтобы избежать возможной вспышки при изменении темы!
+
+		const storageKey = 'theme-preference'
+
+		const onClick = () => {
+			// По клику перевернуть текущее значение:
+			theme.value = theme.value === 'light'
+				? 'dark'
+				: 'light'
+			setPreference()
+		}
+
+		const getColorPreference = () => {
+			if (localStorage.getItem(storageKey))
+				return localStorage.getItem(storageKey)
+			else
+				return window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light'
+		}
+
+		const setPreference = () => {
+			localStorage.setItem(storageKey, theme.value)
+			reflectPreference()
+		}
+
+		const reflectPreference = () => {
+			document.firstElementChild
+				.setAttribute('data-theme', theme.value)
+
+			document
+				.querySelector('#theme-toggle')
+				?.setAttribute('aria-label', theme.value)
+		}
+
+		const theme = {
+			value: getColorPreference(),
+		}
+
+		// Установить заранее, чтобы страница не мигнула (CSS был осведомлен):
+		reflectPreference()
+
+		window.onload = () => {
+			// Установить при загрузке, чтобы скринридеры могли видеть последнее значение на кнопке:
+			reflectPreference()
+
+			// Теперь этот скрипт может находить и прослушивать щелчки по элементу управления:
+			document
+				.querySelector('#theme-toggle')
+				.addEventListener('click', onClick)
+		}
+
+		// Синхронизировать с системными изменениями:
+		window
+			.matchMedia('(prefers-color-scheme: dark)')
+			.addEventListener('change', ({matches:isDark}) => {
+				theme.value = isDark ? 'dark' : 'light'
+				setPreference()
+			})
+	</script>
+
+	<title>{% if title %}{{ title if page.url == '/' else title + ' – ' + _site.name }}{% else %}{{ _site.name }}{% endif %}</title>
+	<meta name="description" content="{{ description or _site.description }}">
+	{% if keywords %}
+	<meta name="keywords" content="{{ keywords }}">
+	{% endif %}
+	<meta name="author" content="Mitorun Studio">
+	<meta name="generator" content="{{ eleventy.generator }}">
+
+	<link rel="stylesheet" href="/mitosite.css">
+	<link rel="icon" sizes="any" href="/favicon.ico">
+	<link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg">
+	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+	{# <link rel="manifest" href="/manifest.json"> #}
+	{% if _site.themeColor %}
+	<meta name="theme-color" content="{{ _site.themeColor or '#fff' }}">
+	{% endif %}
+
+	<link rel="preload" as="image" href="/img/sprite.svg">
+	<!--<link rel="preload" as="font" type="font/woff2" href="/fls/inter-100-900-cyrillic.woff2" crossorigin>
+	<link rel="preload" as="font" type="font/woff2" href="/fls/inter-100-900-latin.woff2" crossorigin>-->
+
+	<!-- htmlmin:ignore --><!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+		m[i].l=1*new Date();
+		for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+		k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+		ym(93507494, "init", {
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true,
+					webvisor:true
+		});
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/93507494" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter --><!-- htmlmin:ignore -->
+
+
+	<meta property="og:title" content="{{ title or _site.name }}">
+	<meta property="og:description" content="{{ description or _site.description }}">
+	<meta property="og:type" content="{{ ogType or 'website' }}">
+	<meta property="og:site_name" content="{{ _site.name }}">
+	<meta property="og:locale" content="{{ lang or _site.lang or 'ru' }}">
+	<meta property="og:image" content="https://v1.screenshot.11ty.dev/{% encodeuri _site.link %}/opengraph/bigger/">
+	<!-- <meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630"> -->
+	<meta property="og:image:alt" content="Скриншот веб-страницы {{ _site.link + page.url }}">
+	<meta property="og:url" content="{{ _site.link + page.url }}">
+	<link rel="canonical" href="{{ _site.link + page.url }}">
+
+	{# <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> #}
+
+	<!-- Шрифты для заголовков: -->
+	{#<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&display=swap" rel="stylesheet">#}
+
+	<!-- Шрифты для базового текста: -->
+	{#<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">#}
+
+
+	<script defer src="/uikit.min.js"></script>
+	{% getBundle "html", "head" %}
+</head>
+
+<body class="page-{% if pageClass %}{{ pageClass }}{% elif page.fileSlug !== '' and page.fileSlug !== 'ru' and page.fileSlug !== 'en' %}{{ page.fileSlug }}{% else %}home{% endif %}">
+
+
+	{% include "_block-header.njk" %}
+
+
+	<main class="main">
+
+		{{ content | safe }}
+
+	</main>
+
+
+	{% include "_block-footer.njk" %}
+
+
+	{% include "_block-scripts.njk" %}
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
+	<g id="wave" stroke="#F86323" stroke-width="8">
+		<path id="line-8" d="M90 18V78"/>
+		<path id="line-7" d="M78 18V78"/>
+		<path id="line-6" d="M66 18V78"/>
+		<path id="line-5" d="M54 18V78"/>
+		<path id="line-4" d="M42 18V78"/>
+		<path id="line-3" d="M30 18V78"/>
+		<path id="line-2" d="M18 18V78"/>
+		<path id="line-1" d="M6 18V78"/>
+	</g>
+
+	<path id="play" d="M79 48L26 14V83L79 48Z" fill="#fff"/>
+
+	<path id="pause" d="M42 18H28V78H42V18Z M68 18H54V78H68V18Z" fill="#fff"/>
+</svg>

@@ -1,0 +1,110 @@
+<!-- Главный файл скриптов: -->
+<script defer src="/mitosite.js"></script>
+
+{% getBundle "js", "script" %}
+
+<noscript class="noscript">У вас в браузере отключён JavaScript</noscript>
+
+
+
+
+<!-- Скрипт для Слайдера "До-после": -->
+{# <script>
+	const container = document.querySelector('.before-after');
+	document.querySelector('.before-after__range').addEventListener('input', (e) => {
+		container.style.setProperty('--before-after-position', `${e.target.value}%`);
+	})
+</script> #}
+
+
+
+
+<!-- Подключение скрипта-бандла слайдера Embla: -->
+{# <script src="/embla-carousel-bundle.js"></script> #}
+
+<!-- Скрипт инициализации и настройки слайдера Embla: -->
+{# <script>
+	// Объект с параметрами для каждого слайдера:
+	const sliderOptions = {
+
+		// Настройки для слайдера с кастомными кнопками:
+		'embla-pictures': {
+			align: 'center',// 'center' (default) | 'start' | 'end' | '0.5' выравнивание активного слайда.
+			loop: true,// зацикленная прокрутка.
+			// Подключение и настройка плагинов:
+			autoplay: {
+				delay: 5000,// задержка мс между автопрокруткой слайдов.
+				stopOnMouseEnter: true,// true остановит автопрокрутку при ховере. При включенной stopOnInteraction: true автопрокрутка уже не вернётся после снятия ховера!
+				stopOnInteraction: false,// false не останавливать при взаимодействии.
+			},
+		},
+	};
+
+	// Техническая часть слайдера:
+	const sliders = document.querySelectorAll('.embla');
+
+	sliders.forEach(slider => {
+		const sliderName = slider.classList[1];// получаем название слайдера.
+		const options = sliderOptions[sliderName];// получаем параметры для текущего слайдера.
+
+		const viewportNode = slider.querySelector('.embla__viewport');
+		const prevButtonNode = slider.querySelector('.embla__prev');
+		const nextButtonNode = slider.querySelector('.embla__next');
+		const dotsNode = slider.querySelector('.embla__dots');
+
+		// Подключаем плагины:
+		const plugins = [];
+		// Подключаем плагин autoplay:
+		if (options.autoplay) {
+			plugins.push(EmblaCarouselAutoplay(options.autoplay));
+		}
+		// Подключаем плагин autoHeight:
+		if (options.autoHeight) {
+			plugins.push(EmblaCarouselAutoHeight(options.autoHeight));
+		}
+		// Подключаем плагин classNames:
+		if (options.classNames) {
+			plugins.push(EmblaCarouselClassNames(options.classNames));
+		}
+		// Подключаем плагин wheelGestures:
+		if (options.wheelGestures) {
+			plugins.push(EmblaCarouselWheelGestures(options.wheelGestures));
+		}
+
+		const embla = EmblaCarousel(viewportNode, options, plugins);
+
+		prevButtonNode.addEventListener('click', embla.scrollPrev, false);
+		nextButtonNode.addEventListener('click', embla.scrollNext, false);
+
+
+		// Создание пагинации dots:
+		embla.slideNodes().forEach((_, index) => {
+			const dot = document.createElement('button');
+			dot.classList.add('embla__dot');
+			dot.addEventListener('click', () => {
+				embla.scrollTo(index);
+				if (embla.plugins().autoplay) {
+					embla.plugins().autoplay.stop();
+					embla.plugins().autoplay.play();
+				}
+			});
+			dotsNode.appendChild(dot);
+		});
+
+		// Обновление активного dot:
+		const updateDots = (selectedIndex) => {
+			const dotsArray = Array.from(dotsNode.querySelectorAll('.embla__dot'))
+			dotsArray.forEach((dot, index) => {
+				if (index === selectedIndex) {
+					dot.classList.add('embla__dot--selected')
+				} else {
+					dot.classList.remove('embla__dot--selected')
+				}
+			})
+		}
+
+		// Обновление активного dot при изменении выбранного слайда:
+		embla.on('select', () => updateDots(embla.selectedScrollSnap()));
+		updateDots(embla.selectedScrollSnap());
+	});
+</script> #}

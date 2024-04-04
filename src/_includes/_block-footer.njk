@@ -1,0 +1,46 @@
+<footer class="footer container reverse-colors">
+	<div class="footer__grid">
+		<a class="brand footer__brand" href="/">
+			<svg aria-hidden="true">
+				<use href="/img/sprite.svg#logo"></use>
+			</svg>
+			<span>{{ _site.header.brand }}</span>
+		</a>
+
+
+		<ul class="menu">
+			{% for item in _site.menu %}
+			<li>
+				<a class="menu__link" href="{{ item.link }}">{{ item.text }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+
+
+
+
+
+		<ul class="social">
+			<li><a class="social__tel" href="tel:{{ _site.tel }}">{{ _site.tel }}</a></li>
+
+			<li><a class="social__link whatsapp" target="_blank" rel="noopener" href="{{ _site.whatsapp }}" aria-label="whatsapp" title="whatsapp"></a></li>
+
+			<li><a class="social__link instagram" target="_blank" rel="noopener" href="{{ _site.instagram }}" aria-label="instagram" title="instagram"></a></li>
+
+			<li><a class="social__link telegram" target="_blank" rel="noopener" href="{{ _site.telegram }}" aria-label="telegram" title="telegram"></a></li>
+
+			{#<li><a class="social__link vkontakte" target="_blank" rel="noopener" href="{{ _site.tel }}" aria-label="vkontakte" title="vkontakte"></a></li>#}
+		</ul>
+	</div>
+
+
+
+
+	<div class="footer__creators">
+		{#<address>2020-{% year %}{{ ' ' + _site.footer.copyright }}</address>#}
+		<a class="a" target="_blank" href="{{ _site.footer.offerLink }}">{{ _site.footer.offerText }}</a>
+
+		<address>{{ _site.footer.address + ' ' }}<a class="a" target="_blank" href="{{ _site.footer.addressLink }}">{{ _site.footer.addressText }}</a></address>
+	</div>
+
+</footer>

@@ -1,0 +1,45 @@
+noindex: true
+
+link: https://promenadpodomam.ru
+name: Променад по домам
+description: Аудиоспектакль с прогулкой по историческим местам Красноярска
+themeColor:
+lang: ru
+
+
+tel: '+79509725970'
+whatsapp: https://wa.me/message/VMSJSYLXMHVUB1
+instagram: https://instagram.com/promenad_po_domam
+telegram: https://t.me/podomam_krsk
+telegramPhotos: https://t.me/promenad_po_domam
+vkontakte: https://vk.com/promenad_po_domam
+
+
+menu:
+  # - text: Главная
+  #   link: /
+  - text: Расписание
+    link: /#schedule
+  - text: Маршруты
+    link: /#routes
+  - text: Голоса
+    link: /#voices
+  # - text: О проекте
+  #   link: /#about
+  # - text: Отзывы
+  #   link: /#reviews
+  - text: Контакты
+    link: /#contacts
+
+
+header:
+  brand: Променад по домам
+
+
+footer:
+  offerText: Договор оферты
+  offerLink: /contract-offer/
+  copyright: © Валентина Ульянкина
+  address: Создано в
+  addressText: Mitorun Studio
+  addressLink: https://mitorun.studio/
