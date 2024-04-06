@@ -3,7 +3,7 @@ name: Deploy static content to Pages
 on:
   # Этот экшен собирает и публикует сайт, когда мы делаем пуш в ветку main (если необходимо, можно изменить название ветки в этом блоке):
   push:
-    branches: ["Main"]
+    branches: ["main"]
   # Этот код разрешает запуск экшена вручную:
   workflow_dispatch:
 
