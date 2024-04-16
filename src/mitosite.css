@@ -124,8 +124,8 @@
 	--font-family-heading: 'Playfair Display', 'Noto Serif Display', 'Cormorant SC', 'Cormorant', 'Roboto', 'system-ui', '-apple-system', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans', serif;
 	--font-family-mono: 'SFMono-Regular', 'ui-monospace', 'Menlo', 'Monaco', 'PT Mono', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
 
-	--font-weight-xl: 570;
-	--font-weight-l: 600;
+	--font-weight-xl: 600;
+	--font-weight-l: 500;
 	--font-weight-m: 370;
 	--line-height-m: 1.5;
 	--line-height-s: 1.35;
@@ -369,7 +369,7 @@ option {
 .h5,
 .h6 {
 	margin-bottom: 1em;
-	font-weight: var(--font-weight-xl);
+	font-weight: 560;
 	line-height: var(--line-height-xs);
 	font-family: var(--font-family-heading);
 	/* overflow-wrap: normal; */
@@ -1516,7 +1516,7 @@ svg {
 .hero__h1 span {
 	display: block;
 	font-weight: 600;
-	font-size: 0.6em;
+	font-size: max(18px, 0.5em);
 	line-height: 2.2;
 	font-family: 'Miama Nueva', cursive;
 }
@@ -1813,6 +1813,7 @@ svg {
 	align-items: end;
 	width: 100%;
 	max-width: 360px;
+	transition: 0.2s linear;
 }
 
 @media (width < 768px) {
@@ -1837,6 +1838,12 @@ svg {
 	object-position: 50% 35%;
 	border-radius: 900px 900px 0 0;
 	/*overflow: hidden;*/
+	transition: 0.2s linear;
+}
+
+.schedule__card:hover .schedule__img {
+	/* outline: 6px solid var(--color-main); */
+	border: 6px solid var(--color-main);
 }
 
 .schedule__content {
@@ -1847,7 +1854,7 @@ svg {
 	grid-template-rows: auto 1fr;
 	grid-auto-rows: auto;
 	grid-auto-flow: row;
-	gap: var(--margin-s);
+	gap: var(--margin-xs);
 	height: 100%;
 	margin: var(--margin-s);
 	padding: var(--margin-s);
