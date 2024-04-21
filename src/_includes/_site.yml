@@ -23,15 +23,15 @@ menu:
   # - text: Маршруты
   #   link: /#routes
   - text: Центр
-    link: /#routes1
+    link: /#route1
   - text: Начало
-    link: /#routes2
+    link: /#route2
   - text: Задворки
-    link: /#routes3
+    link: /#route3
   - text: Грива
-    link: /#routes4
+    link: /#route4
   - text: Овсянка
-    link: /#routes5
+    link: /#route5
   - text: О проекте
     link: /#about
   # - text: Отзывы
