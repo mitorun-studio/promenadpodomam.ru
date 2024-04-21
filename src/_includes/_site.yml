@@ -20,16 +20,28 @@ menu:
   #   link: /
   - text: Расписание
     link: /#schedule
-  - text: Маршруты
-    link: /#routes
-  - text: Голоса
-    link: /#voices
-  # - text: О проекте
-  #   link: /#about
+  # - text: Маршруты
+  #   link: /#routes
+  - text: Центр
+    link: /#routes1
+  - text: Начало
+    link: /#routes2
+  - text: Задворки
+    link: /#routes3
+  - text: Грива
+    link: /#routes4
+  - text: Овсянка
+    link: /#routes5
+  - text: О проекте
+    link: /#about
   # - text: Отзывы
   #   link: /#reviews
-  - text: Контакты
+  - text: ЧаВо
+    link: /#faq
+  - text: Записаться
     link: /#contacts
+  # - text: Литературный конкурс
+  #   link: /#contest
 
 
 header:

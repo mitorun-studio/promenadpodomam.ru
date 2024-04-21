@@ -982,27 +982,30 @@ svg {
 ================================================*/
 
 .header {
-	/*position: absolute;*/
+	/* position: absolute; */
+	width: 100%;
+}
+
+.header__grid {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	grid-auto-columns: auto;
 	grid-auto-flow: column;
 	gap: var(--margin-s);
 	align-items: center;
-	width: 100%;
 	min-height: 90px;
 	padding-top: var(--margin-s);
 	padding-bottom: var(--margin-s);
 }
 
 @media (width >= 576px) and (height > 640px) {
-	.header {
+	.header__grid {
 		min-height: 100px;
 	}
 }
 
 @media (width >= 992px) and (height > 730px) {
-	.header {
+	.header__grid {
 		min-height: 120px;
 	}
 }
@@ -1237,7 +1240,246 @@ svg {
 	outline-offset: 20px;
 }
 
+/* .header__nav {
+	justify-self: end;
+} */
 
+.menu {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: clamp(0px, calc(-18px + 4vh), 24px) 0;
+	padding: 0 0 0 34px;
+}
+
+.menu__link {
+	display: inline-block;
+	padding: 12px 0;
+	line-height: 1;
+	white-space: nowrap;
+	text-decoration: underline;
+	text-decoration-thickness: 0.06em;
+	text-underline-offset: 0.26em;
+	text-decoration-color: transparent;
+	text-decoration-skip-ink: none;
+	transition: 0.15s linear;
+}
+
+.menu__link:hover,
+.menu__link:focus-visible {
+	text-decoration-color: currentColor;
+	text-underline-offset: 0.32em;
+}
+
+.menu__link:active {
+	text-underline-offset: 0.18em;
+	filter: brightness(0.9);
+}
+
+/* Кнопка открытия (и закрытия) бургер-меню: */
+
+.header__button {
+	display: grid;
+	place-content: center;
+	width: 48px;
+	height: 48px;
+	aspect-ratio: 1/1;
+	color: var(--color);
+	background-color: transparent;
+	border: 0;
+	border-radius: 99px;
+	-webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
+	transition: 0.13s linear;
+}
+
+.header__button:hover {
+	color: var(--color-main);
+	background-color: var(--grey-lightest);
+}
+
+.header__button svg {
+	width: 32px;
+	height: 32px;
+}
+
+.open-menu {
+	justify-self: end;
+	/* background-image: url('/img/sprite.svg#burger'); */
+}
+
+.close-menu {
+	position: absolute;
+	top: 22px;
+	right: var(--container-padding);
+	/*background-image: url('/img/sprite.svg#cross');*/
+}
+
+@media (width >= 576px) {
+	.close-menu {
+		top: 26px;
+		/* right: 26px; */
+	}
+}
+
+@media (width >= 992px) {
+	.close-menu {
+		top: 36px;
+		/* right: 36px; */
+	}
+}
+
+@media (width >= 992px) and (height >= 620px) {
+	.close-menu {
+		top: 36px;
+		right: auto;
+		left: 36px;
+	}
+}
+
+/* Удаляет иконку крестика от скрипта UIkit: */
+
+.close-menu svg:nth-child(2) {
+	display: none;
+}
+
+/*================================================
+=== Компонент Burger-menu UIkit Off-canvas: ======
+================================================*/
+
+.uk-offcanvas {
+	--burger-menu-width: min(60%, 440px);
+	--burger-menu-duration: 0.3s;
+	position: fixed;
+	top: 0;
+	/* bottom: 0; */
+	left: 0;
+	z-index: 1000;
+	display: none;
+	height: 100vh;
+}
+
+.uk-offcanvas-flip .uk-offcanvas {
+	right: 0;
+	left: auto;
+}
+
+.uk-offcanvas-bar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: calc(-1 * var(--burger-menu-width));
+	box-sizing: border-box;
+	display: grid;
+	gap: clamp(0px, calc(-10px + 6vh), 32px);
+	align-content: center;
+	width: var(--burger-menu-width);
+	/* padding: 20px; */
+	background-color: var(--bg);
+	overflow-y: auto;
+	transition: left var(--burger-menu-duration) ease-in;
+}
+
+.uk-offcanvas-flip .uk-offcanvas-bar {
+	right: calc(-1 * var(--burger-menu-width));
+	left: auto;
+	transition-property: right;
+}
+
+.uk-open > .uk-offcanvas-bar {
+	left: 0;
+	transition: left var(--burger-menu-duration) ease-out;
+}
+
+.uk-offcanvas-flip .uk-open > .uk-offcanvas-bar {
+	right: 0;
+	left: auto;
+	transition: right var(--burger-menu-duration) ease-out;
+}
+
+/* Вместо этих свойств просто добавил transition к самим блокам.
+Slide Animation (Used in slide and push mode): */
+/* .uk-offcanvas-bar-animation {
+	transition: left var(--burger-menu-duration) ease-out;
+}
+
+.uk-offcanvas-flip .uk-offcanvas-bar-animation {
+	transition-property: right;
+} */
+
+/* Анимация раскрытия(?) бургер-меню: */
+
+.uk-offcanvas-reveal {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	overflow: hidden;
+	transition: width var(--burger-menu-duration) ease-out;
+}
+
+.uk-offcanvas-reveal .uk-offcanvas-bar {
+	left: 0;
+}
+
+.uk-offcanvas-flip .uk-offcanvas-reveal .uk-offcanvas-bar {
+	right: 0;
+	left: auto;
+}
+
+.uk-open > .uk-offcanvas-reveal {
+	width: var(--burger-menu-width);
+}
+
+.uk-offcanvas-flip .uk-offcanvas-reveal {
+	right: 0;
+	left: auto;
+}
+
+/* Кнопка закрытия (uk-close): */
+
+/* .uk-offcanvas-close {
+	position: absolute;
+	top: 14px;
+	right: var(--container-padding);
+	z-index: 1000;
+	padding: 5px;
+	background-image: url('/img/sprite.svg#cross');
+} */
+
+.uk-offcanvas-close:first-child + * {
+	margin-top: 0;
+}
+
+/* Overlay (затемнение): */
+
+.uk-offcanvas-overlay {
+	width: 100vw;
+	touch-action: none; /* чтобы закрывался смахиванием на смартфонах */
+}
+
+.uk-offcanvas-overlay::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-color: hsla(40, 10%, 20%, 0.2);
+	backdrop-filter: blur(3px);
+	opacity: 0;
+	transition: opacity calc(var(--burger-menu-duration) / 2) linear;
+}
+
+.uk-offcanvas-overlay.uk-open::before {
+	opacity: 1;
+}
+
+/* Запрет прокрутки при открытии бургер-меню: */
+
+.uk-offcanvas-page,
+.uk-offcanvas-container {
+	overflow-x: clip; /* `clip` is needed for `position: sticky` elements to keep their position */
+}
+
+/* Конец компонента Burger-menu UIkit Off-canvas. */
 
 
 /*------------------------------------------------
@@ -2735,7 +2977,7 @@ svg {
 	/*align-items: start;*/
 }
 
-.menu {
+.footer .menu {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -2747,14 +2989,14 @@ svg {
 }
 
 @media (width >= 576px) {
-	.menu {
+	.footer .menu {
 		justify-self: end;
 		flex-direction: row;
 		/*gap: var(--margin-m);*/
 	}
 }
 
-.menu__link {
+.footer .menu__link {
 	text-decoration: underline;
 	text-decoration-thickness: 0.06em;
 	text-underline-offset: 0.26em;
@@ -2763,13 +3005,13 @@ svg {
 	transition: 0.15s linear;
 }
 
-.menu__link:hover,
-.menu__link:focus-visible {
+.footer .menu__link:hover,
+.footer .menu__link:focus-visible {
 	text-decoration-color: currentColor;
 	text-underline-offset: 0.32em;
 }
 
-.menu__link:active {
+.footer .menu__link:active {
 	text-underline-offset: 0.18em;
 	filter: brightness(0.9);
 }
