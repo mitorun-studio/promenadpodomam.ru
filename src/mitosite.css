@@ -148,7 +148,7 @@
 	--color: hsl(0, 0%, 15%);
 	--color-reverse: hsl(36, 40%, 96%);
 	--bg: hsl(40, 50%, 95%);
-	--bg-a: hsla(32, 50%, 94%, 0.7);
+	--bg-a: hsla(32, 50%, 94%, 0.57);
 	--bg-reverse: hsl(32, 3%, 22%);
 	--grey-dark: hsl(32, 2%, 33%);
 	--grey: hsl(32, 2%, 42%);
@@ -2404,24 +2404,12 @@ Slide Animation (Used in slide and push mode): */
 }
 
 .uk-slider-left {
-	left: var(--container-padding);
-	/* left: calc(-1 * var(--margin-s)); */
+	left: var(--margin-xs);
 	scale: -1 1;
 }
 
 .uk-slider-right {
-	right: var(--container-padding);
-	/* right: calc(-1 * var(--margin-s)); */
-}
-
-@media (width >= 768px) {
-	.uk-slider-left {
-		left: var(--margin-xs);
-	}
-
-	.uk-slider-right {
-		right: var(--margin-xs);
-	}
+	right: var(--margin-xs);
 }
 
 .uk-slider-left::after,
@@ -2571,7 +2559,9 @@ Slide Animation (Used in slide and push mode): */
 	max-width: 600px;
 }
 
-/* .route-5-grid__img {} */
+.route-5-grid__img {
+	max-width: 50vw;
+}
 
 @media (width >= 768px) {
 	.route-5-grid__img {
@@ -2626,8 +2616,15 @@ Slide Animation (Used in slide and push mode): */
 }
 
 .sponsor__img {
+	width: 100%;
 	max-width: 476px;
-	max-height: 128px;
+	max-height: 148px;
+	padding: var(--margin-s);
+	background-color: var(--grey-lightest);
+}
+
+[data-theme='dark'] .sponsor__img {
+	background-color: var(--grey);
 }
 
 @media (width >= 768px) {
@@ -3131,451 +3128,10 @@ Slide Animation (Used in slide and push mode): */
 
 
 
-/*------------------------------------------------
---- Компонент стилей для статей: -----------------
-------------------------------------------------*/
 
-.content {
-	--font-size-m: 17px;
-	display: grid;
-	row-gap: 1.2em;
-	/* или calc(1em + 2px); */
-	max-width: 760px;
-	margin-right: auto;
-	margin-left: auto;
-	font-size: var(--font-size-m);
-}
 
-@media (width >= 576px) {
-	.content {
-		--font-size-m: 18px;
-	}
-}
 
-@media (width >= 992px) {
-	.content {
-		--font-size-m: 20px;
-	}
-}
 
-.content > *:first-child {
-	margin-top: 0;
-}
-
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
-	margin-top: 1.5em;
-	margin-bottom: max(0.06em, 4px);
-	line-height: var(--line-height-xs, 1.2);
-}
-
-.content h1 {
-	font-size: clamp(26px, calc(22px + 1.5vw), 40px);
-}
-
-.content h2 {
-	font-size: clamp(24px, calc(21.2px + 0.9vw), 32px);
-}
-
-.content h3 {
-	font-size: clamp(22px, calc(20.8px + 0.6vw), 28px);
-	line-height: var(--line-height-s, 1.3);
-}
-
-.content h4 {
-	font-size: clamp(20px, calc(20.4px + 0.3vw), 24px);
-	line-height: var(--line-height-s, 1.3);
-}
-
-.content h5 {
-	font-size: var(--font-size-l, 19px);
-	line-height: var(--line-height-m, 1.5);
-}
-
-.content h6 {
-	font-size: var(--font-size-m, 16px);
-	line-height: var(--line-height-m, 1.5);
-}
-
-.content p {
-	font-size: var(--font-size-m);
-	line-height: 1.5;
-}
-
-.content a {
-	text-decoration: underline;
-	text-underline-offset: 0.26em;
-	text-decoration-thickness: 0.08em;
-	text-decoration-skip-ink: none;
-	color: var(--color-main);
-	transition: 0.15s linear;
-}
-
-.content a:hover,
-.content a:focus-visible {
-	text-underline-offset: 0.32em;
-}
-
-.content a:active {
-	text-underline-offset: 0.18em;
-}
-
-.list,
-.content ul,
-.content ol {
-	display: grid;
-	row-gap: 0.5em;
-	padding-left: 30px;
-	list-style: auto;
-}
-
-/* .content :is(ol, ul) :is(ol, ul) */
-
-.content ul ul,
-.content ol ol,
-.content ul ol,
-.content ol ul {
-	margin-top: 0.5em;
-	/* margin-bottom: 0.5em; */
-}
-
-.list li,
-.content li {
-	font-size: var(--font-size-m);
-	line-height: var(--line-height-s, 1.3);
-}
-
-/* Кастомные маркеры списков: */
-
-.list ul,
-.content ul {
-	list-style-position: outside;
-	list-style-type: disc;
-	/* disc | circle | square | decimal | georgian | trad-chinese-informal | kannada | '–' | custom-counter-style | none; */
-	list-style-image: url('./img/ul.svg');
-	/* outside | inside; */
-}
-
-/* .content ul,
-.content ol {
-	padding-left: 24px;
-	list-style: none;
-}
-
-.content ul li::before {
-	position: absolute;
-	margin-left: -24px;
-	content: '–';
-}
-
-.content ol {
-	counter-reset: list;
-}
-
-.content ol li::before {
-	position: absolute;
-	margin-left: -24px;
-	counter-increment: list;
-	content: counter(list) '.';
-} */
-
-/* .list ul li::marker,
-.content ul li::marker {
-	content: '✝ ';
-	font-size: 1em;
-}
-
-.list ol li::marker,
-.content ol li::marker {
-	content: '₽ ';
-	font-size: 1em;
-} */
-
-b,
-strong,
-.b,
-.content strong {
-	font-weight: var(--font-weight-l, 600);
-}
-
-i,
-.i,
-.content em {
-	font-style: italic;
-	/* font-style: oblique 40deg; */
-}
-
-s,
-.s,
-.content s {
-	text-decoration: line-through;
-	text-decoration-thickness: 0.08em;
-	text-decoration-color: red;
-	/* opacity: 0.6; */
-}
-
-.hr,
-.content hr {
-	font-size: var(--font-size-m);
-	color: inherit;
-	border: 0;
-	border-top: 1px solid var(--grey-light);
-}
-
-.content blockquote {
-	padding: 0.8em 0.7em;
-	font-size: var(--font-size-m);
-	font-style: italic;
-	background-color: var(--grey-lightest);
-	border-left: 4px solid var(--grey);
-}
-
-@media (width >= 576px) {
-	.content blockquote {
-		padding: 1em 1.2em;
-		border-left-width: 6px;
-	}
-}
-
-.content img,
-.content video {
-	width: 100%;
-	max-width: 100%;
-	height: auto;
-	max-height: 600px;
-	/*aspect-ratio: 3/2;*/
-	object-fit: contain;
-	object-position: center center;
-	border: 1px solid var(--grey-light);
-}
-
-.content-block iframe {
-	display: block;
-	width: 100%;
-	border: none;
-}
-
-.content-block figure {
-	display: grid;
-	row-gap: 1em;
-	padding-block: 1em;
-	margin: 0;
-}
-
-.content-block figcaption {
-	font-size: var(--font-size-s);
-	text-align: center;
-}
-
-.content-block details {
-	overflow: auto;
-}
-
-/*--- Инлайновый код: -------------------*/
-
-kbd,
-code,
-pre,
-samp {
-	font-size: 90%;
-	font-family: var(--font-family-mono, monospace);
-	direction: ltr;
-	white-space: pre-wrap;
-	/* word-wrap: break-word; */
-	word-break: break-word;
-	unicode-bidi: bidi-override;
-}
-
-.kbd,
-.code,
-.content:not(pre) > code {
-	padding: 0.2em 0.26em;
-	font-weight: 440;
-	font-size: 90%;
-	line-height: 1;
-	hyphens: none;
-	background: var(--bg-code);
-	-webkit-box-decoration-break: clone;
-	box-decoration-break: clone;
-	/* var(--bg-code); */
-	/* border: 1px dashed var(--grey); */
-	border-radius: 0.3em;
-	margin-inline: 0.1em;
-}
-
-/*--- Блок с кодом: ----------------------*/
-
-:root {
-	--bg-code: hsl(0, 0%, 94%);
-}
-
-.code-block,
-.content pre {
-	position: relative;
-	display: block;
-	font-size: var(--font-size-m);
-	background-color: var(--bg-code);
-	overflow: auto;
-}
-
-@media (width < 576px) {
-	.code-block,
-	.content pre {
-		margin-right: calc(-1 * var(--container-padding));
-		margin-left: calc(-1 * var(--container-padding));
-	}
-}
-
-.code-block::after,
-.content pre::after {
-	content: '';
-	position: absolute;
-	inset: 0 0 14px;
-	background-image: linear-gradient(to right, var(--bg-code) 2px, transparent var(--container-padding), transparent calc(100% - var(--container-padding)), var(--bg-code) calc(100% - 2px));
-	pointer-events: none;
-}
-
-@media (width >= 576px) {
-	.code-block::after,
-	.content pre::after {
-		background-image: linear-gradient(to right, var(--bg-code) 3px, transparent 1.8em, transparent calc(100% - 1.8em), var(--bg-code) calc(100% - 3px));
-	}
-}
-
-.code-block code,
-.content pre > code {
-	display: block;
-	/* min-height: 8em; */
-	padding: 0.9em var(--container-padding);
-	font-size: 90%;
-	line-height: 1.2;
-	white-space: pre;
-	tab-size: 2;
-	/* background-color: var(--grey-lightest); */
-	overflow: auto;
-}
-
-@media (width >= 576px) {
-	.code-block code,
-	.content pre > code {
-		padding: 0.9em 1.8em;
-	}
-}
-
-@media (width >= 800px) {
-	.code-block code,
-	.content pre > code {
-		tab-size: 4;
-	}
-}
-
-/*--- Скроллбар для блока кода: ----------------*/
-
-.content pre > code::-webkit-scrollbar {
-	height: 14px;
-}
-
-.content pre > code::-webkit-scrollbar-thumb {
-	background: content-box transparent;
-	border: 4px solid transparent;
-	border-radius: 9px;
-	transition: 0.17s linear;
-}
-
-.content pre > code::-webkit-scrollbar-track {
-	background-color: transparent;
-}
-
-.content pre > code:hover::-webkit-scrollbar-thumb {
-	background-color: var(--grey-light);
-	/* border: 2px solid red; */
-}
-
-/*--- Конец базовых стилей Контента. ----------*/
-
-
-
-
-/*------------------------------------------------
---- Компонент таблица: ------------------------
-------------------------------------------------*/
-
-.table,
-.content table {
-	min-width: 100%;
-	/* auto | fixed; метод вычисления ширины ячеек, желательно указывать ширину таблицы */
-	font-size: var(--font-size-s);
-	line-height: var(--line-height-xs);
-	/* min-width: 600px; */
-	table-layout: auto;
-	background-color: hsl(0, 0%, 100%);
-	/* border: 1px solid red; */
-	border-collapse: collapse;
-	/* separate | collapse; это соединяет рамки соседних ячеек. Но при этом рамки становятся как бы частью таблицы и не принадлежат ячейкам, например при фиксировании ячеек рамки теряются. */
-	border-spacing: 0;
-	/* 0 | 8px; это профилактика для border-collapse: collapse; */
-	/*empty-cells: show | hide; hide будет прятать пустые ячейки */
-	overflow: auto;
-	/*overflow: hidden; это для выделения колонок псевдоэлементом */
-}
-
-.table caption,
-.content caption {
-	margin: 1em 0 0.5em;
-	font-weight: var(--font-weight-xl);
-	font-size: var(--font-size-l);
-	line-height: var(--line-height-s);
-	text-align: left;
-}
-
-.table tbody tr:nth-of-type(even),
-.content tbody tr:nth-of-type(even) {
-	background-color: hsl(208, 60%, 97%);
-}
-
-.table th,
-.content th {
-	font-weight: var(--font-weight-l);
-	background: hsl(208, 12%, 88%);
-}
-
-.table th,
-.table td,
-.content th,
-.content td {
-	/*position: relative; это для выделения колонок псевдоэлементом */
-	padding: 0.4em 0.6em;
-	/*text-align: center; стоит ли так оформлять по умолчанию? */
-	/*vertical-align: middle; это по умолчанию в хроме */
-	border: 1px solid hsl(0, 0%, 60%);
-	overflow: hidden;
-	/* это вариант рамки с помощью border */
-	/*box-shadow: 0 0 0 2px hsl(0, 0%, 60%); это вариант рамки с помощью box-shadow */
-	/*outline: 2px solid var(--grey-light); это вариант рамки с помощью outline */
-}
-
-/* Конец базового компонента таблицы. */
-
-
-/*================================================
-=== Страница Ошибка 404 /404/: ===================
-================================================*/
-
-/* .page-404 {} */
-
-.page-404 .main {
-	display: grid;
-	align-items: center;
-}
-
-.section-404 {
-	display: grid;
-	gap: var(--margin-s);
-}
 
 
 
