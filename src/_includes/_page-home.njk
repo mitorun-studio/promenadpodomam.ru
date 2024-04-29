@@ -228,10 +228,12 @@ layout: _page-base.njk
 
 	<!-- Маршрут №4 Грива: -->
 	<h3 class="h2" id="route4">{{ route4.heading }}</h3>
-	<p>{{ route4.text }}</p>
-	<p>{{ route4.var1 }}</p>
-	<p>{{ route4.var2 }}</p>
-	<p>{{ route4.desc }}</p>
+	<p class="route-4-text">{{ route4.text }}</p>
+	<div class="route-4-var">
+		<p>{{ route4.var1 }}</p>
+		<p>{{ route4.var2 }}</p>
+	</div>
+	<p>{{ route4.desc | safe }}</p>
 	<div>
 		{% for item in route4.list %}
 		<p>{{ item.text }}</p>

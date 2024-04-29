@@ -1614,7 +1614,9 @@ Slide Animation (Used in slide and push mode): */
 .hero__h1 {
 	max-width: 12em;
 	margin-bottom: 0;
+	font-size: clamp(36px, calc(29px + 2.7vw), 68px);
 	line-height: 1.1;
+	font-family: var(--font-family-heading);
 }
 
 .hero__h1 span {
@@ -1970,6 +1972,7 @@ Slide Animation (Used in slide and push mode): */
 .schedule__title {
 	margin-bottom: 0;
 	font-size: var(--font-size-m);
+	font-family: var(--font-family-heading);
 	text-transform: none;
 }
 
@@ -2860,9 +2863,28 @@ Slide Animation (Used in slide and push mode): */
 /*=== Конец компонента Спойлер UIkit. ===*/
 
 
+/*================================================
+=== Маршрут №4 Грива: ============================
+================================================*/
 
+.route-4-text {
+	max-width: 600px;
+	margin-bottom: var(--margin-m);
+	font-size: var(--font-size-l);
+}
 
+.route-4-var {
+	display: grid;
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-m);
+}
 
+@media (width >= 576px) {
+	.route-4-var {
+		grid-template-columns: 1fr 1fr;
+		gap: var(--margin-s);
+	}
+}
 
 
 
