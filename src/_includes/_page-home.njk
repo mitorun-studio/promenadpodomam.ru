@@ -285,21 +285,25 @@ layout: _page-base.njk
 
 	<!-- Маршрут №5 Овсянка: -->
 	<h3 class="h2" id="route5">{{ route5.heading }}</h3>
-	<p>{{ route5.text }}</p>
-	<p>{{ route5.text2 }}</p>
-	<div>
-		<p>{{ route5.desc }}</p>
+	<div class="route-5-grid">
+		<p class="route-5-grid__subtitle">{{ route5.text }}</p>
+		<p class="route-5-grid__text">{{ route5.text2 }}</p>
+		<img class="route-5-grid__img" src="{{ route5.img }}" alt="{{ route5.imgAlt }}">
+	</div>
+	<div class="route-5-grid-2">
+		<p class="route-5-grid-2__title">{{ route5.desc }}</p>
 		{% for item in route5.list %}
-		<p>{{ item.text }}</p>
+		<p class="route-5-grid-2__text">{{ item.text }}</p>
 		{% endfor %}
 	</div>
-	<p>{{ route5.text3 }}</p>
+
 	<div class="sponsor">
-		<p>{{ route5.sponsor }}</p>
+		<p class="sponsor__title">{{ route5.sponsor }}</p>
 		<a class="a sponsor__link" href="{{ route5.sponsorLink }}">{{ route5.sponsorText }}</a>
+		<img class="sponsor__img" src="{{ route5.sponsorLogo }}" alt="">
 	</div>
 
-	<div class="route mb-l">
+	<div class="route mb-m">
 		<div class="route__content">
 			<p class="route__title">{{ route5.title }}</p>
 			<p class="route__list">
@@ -339,6 +343,7 @@ layout: _page-base.njk
 		</div>
 	</div>
 
+	<p class="route-5-text">{{ route5.text3 }}</p>
 	<a class="button mb-l" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ firstscreen.buttonText }}</a>
 
 
