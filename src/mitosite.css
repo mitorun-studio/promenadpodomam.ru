@@ -74,9 +74,9 @@
 
 :root {
 	--container-padding: 18px;
-	--margin-xl: 120px;
+	--margin-xl: 152px;
 	--margin-l2: calc(var(--margin-l) * 1.5);
-	--margin-l: 60px;
+	--margin-l: 76px;
 	--margin-m2: calc(var(--margin-m) * 1.5);
 	--margin-m: 28px;
 	--margin-s2: calc(var(--margin-s) * 1.5);
@@ -87,27 +87,16 @@
 
 @media (width >= 576px) {
 	:root {
-		--container-padding: 40px;
-		--margin-xl: 120px;
-		--margin-l: 60px;
-		--margin-m: 32px;
-		--margin-s: 16px;
-		--margin-xs: 8px;
-	}
-}
-
-@media (width >= 992px) {
-	:root {
-		--container-padding: 60px;
+		--container-padding: 50px;
 		--margin-xl: 160px;
 		--margin-l: 80px;
-		--margin-m: 40px;
-		--margin-s: 20px;
+		--margin-m: 36px;
+		--margin-s: 18px;
 		--margin-xs: 9px;
 	}
 }
 
-@media (width >= 1300px) {
+@media (width >= 1200px) {
 	:root {
 		--container-padding: 80px;
 		--margin-xl: 192px;
@@ -1028,7 +1017,7 @@ samp:not([class]) {
 	transition: 0.15s linear;
 }
 
-@media (width < 576px) {
+@media (width < 640px) {
 	.social__tel {
 		display: none;
 	}
@@ -1111,6 +1100,9 @@ samp:not([class]) {
 	flex-direction: column;
 	flex-wrap: wrap;
 	gap: clamp(0px, calc(-18px + 4vh), 24px) 0;
+}
+
+.header__menu {
 	padding: 0 0 0 34px;
 }
 
@@ -1647,7 +1639,7 @@ Slide Animation (Used in slide and push mode): */
 .hero__buttons {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--margin-m);
+	gap: var(--margin-m) var(--margin-s);
 	align-items: center;
 }
 
@@ -1667,8 +1659,7 @@ Slide Animation (Used in slide and push mode): */
 	place-items: center;
 	place-content: center;
 	width: fit-content;
-	/*padding: var(--padding-form) calc(var(--padding-form) * 3);*/
-	padding: 1em 2.2em;
+	padding: 1em 1.8em;
 	font-weight: 460;
 	font-size: var(--font-size-l);
 	line-height: var(--line-height-form);
@@ -1688,6 +1679,12 @@ Slide Animation (Used in slide and push mode): */
 	appearance: none;
 	-webkit-tap-highlight-color: transparent;
 	/*transition: filter 0.18s linear, text-shadow 0.1s linear;*/
+}
+
+@media (width >= 576px) {
+	.button {
+		padding: 1em 2.2em;
+	}
 }
 
 .button::before {
@@ -1889,7 +1886,7 @@ Slide Animation (Used in slide and push mode): */
 ------------------------------------------------*/
 
 .subtitle {
-	max-width: 650px;
+	max-width: 640px;
 	margin-bottom: var(--margin-m);
 	text-wrap: balance;
 	color: var(--grey);
@@ -2064,6 +2061,13 @@ Slide Animation (Used in slide and push mode): */
 		background-size: 900px 332px;
 	}
 } */
+
+.route-subtitle {
+	max-width: 640px;
+	margin-bottom: var(--margin-m);
+	font-weight: var(--font-weight-l);
+	font-size: var(--font-size-l);
+}
 
 
 
@@ -2291,14 +2295,6 @@ Slide Animation (Used in slide and push mode): */
 	.route {
 		grid-template-columns: 1fr 1fr;
 	}
-
-	/* .route:nth-of-type(odd) .route__content {
-		order: 2;
-	} */
-
-	.route .route__content {
-		order: 2;
-	}
 }
 
 /* .route__content {
@@ -2306,6 +2302,10 @@ Slide Animation (Used in slide and push mode): */
 	grid-template-rows: auto 1fr auto;
 	height: 100%;
 } */
+
+.route .route__content {
+	order: 2;
+}
 
 .route__title {
 	margin-bottom: 0.9em;
@@ -2549,10 +2549,9 @@ Slide Animation (Used in slide and push mode): */
 }
 
 .route-5-grid__subtitle {
-	max-width: 600px;
-	font-weight: var(--font-weight-xl);
+	max-width: 640px;
+	font-weight: var(--font-weight-l);
 	font-size: var(--font-size-l);
-	font-family: var(--font-family-heading);
 }
 
 .route-5-grid__text {
@@ -2583,9 +2582,8 @@ Slide Animation (Used in slide and push mode): */
 }
 
 .route-5-grid-2__title {
-	font-weight: var(--font-weight-xl);
+	font-weight: var(--font-weight-l);
 	font-size: var(--font-size-l);
-	font-family: var(--font-family-heading);
 }
 
 @media (width >= 992px) {
@@ -2609,10 +2607,9 @@ Slide Animation (Used in slide and push mode): */
 }
 
 .sponsor__title {
-	max-width: 600px;
-	font-weight: var(--font-weight-xl);
+	max-width: 640px;
+	font-weight: var(--font-weight-l);
 	font-size: var(--font-size-l);
-	font-family: var(--font-family-heading);
 }
 
 .sponsor__img {
@@ -2670,39 +2667,36 @@ Slide Animation (Used in slide and push mode): */
 
 
 .partners {
-	display: flex;
+	/* display: flex;
 	flex-wrap: wrap;
 	gap: var(--margin-m);
-	justify-content: center;
+	justify-content: center; */
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: var(--margin-m) var(--margin-s);
 	padding-top: var(--margin-s);
+}
+
+@media (width >= 576px) {
+	.partners {
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	}
 }
 
 .partners__card {
 	position: relative;
-	/* display: grid;
-	place-content: center; */
-	width: 15em;
-	aspect-ratio: 1 / 0.6;
-	padding: 2em;
+	display: grid;
+	align-items: center;
+	min-height: 8em;
+	padding: 0.8em 1.2em 0.6em;
 	font-weight: 500;
 	font-size: var(--font-size-m);
 	line-height: var(--line-height-s);
 	/* text-align: center; */
 	letter-spacing: -0.01em;
-	/* color: var(--color-main-dark); */
-	/* background-color: var(--color-main-light); */
-	border-radius: 999px;
+	/* background-color: var(--color-main-light);
+	border-radius: 999px 999px 0 0; */
 }
-
-/* .partners__card::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	border: 1px solid hsl(30, 78%, 68%);
-	border-radius: 999px;
-	pointer-events: none;
-	transform: translate(0.6em, -0.6em);
-} */
 
 .partners__card::before,
 .partners__card::after {
@@ -2711,9 +2705,10 @@ Slide Animation (Used in slide and push mode): */
 	top: 0;
 	left: 0;
 	z-index: -1;
-	width: 6.3em;
-	height: 100%;
-	border-radius: 999px;
+	width: 5em;
+	height: 100%;/*100%;*/
+	min-height: 8em;
+	border-radius: 999px 999px 0 0;
 	pointer-events: none;
 }
 
@@ -2756,7 +2751,7 @@ Slide Animation (Used in slide and push mode): */
 	max-width: min(50vw, 300px);
 	aspect-ratio: 3/4;
 	margin-left: auto;
-	border-radius: 999px;
+	border-radius: 999px 999px 0 0;
 }
 
 /*================================================
@@ -2864,12 +2859,6 @@ Slide Animation (Used in slide and push mode): */
 === Маршрут №4 Грива: ============================
 ================================================*/
 
-.route-4-text {
-	max-width: 600px;
-	margin-bottom: var(--margin-m);
-	font-size: var(--font-size-l);
-}
-
 .route-4-var {
 	display: grid;
 	gap: var(--margin-s);
@@ -2961,6 +2950,7 @@ Slide Animation (Used in slide and push mode): */
 	display: grid;
 	gap: 30px;
 	align-items: start;
+	justify-items: center;
 	margin-bottom: var(--margin-m);
 }
 
@@ -2975,10 +2965,12 @@ Slide Animation (Used in slide and push mode): */
 	/*align-items: start;*/
 }
 
-.footer .menu {
+.footer__menu {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 	/*display: grid;
 	grid-template-columns: auto;
 	grid-auto-columns: auto;
@@ -2987,14 +2979,20 @@ Slide Animation (Used in slide and push mode): */
 }
 
 @media (width >= 576px) {
-	.footer .menu {
+	.footer__menu {
 		justify-self: end;
 		flex-direction: row;
 		/*gap: var(--margin-m);*/
 	}
 }
 
-.footer .menu__link {
+@media (width >= 992px) {
+	.footer__menu {
+		justify-content: flex-start;
+	}
+}
+
+.footer__menu .menu__link {
 	text-decoration: underline;
 	text-decoration-thickness: 0.06em;
 	text-underline-offset: 0.26em;
@@ -3003,13 +3001,13 @@ Slide Animation (Used in slide and push mode): */
 	transition: 0.15s linear;
 }
 
-.footer .menu__link:hover,
-.footer .menu__link:focus-visible {
+.footer__menu .menu__link:hover,
+.footer__menu .menu__link:focus-visible {
 	text-decoration-color: currentColor;
 	text-underline-offset: 0.32em;
 }
 
-.footer .menu__link:active {
+.footer__menu .menu__link:active {
 	text-underline-offset: 0.18em;
 	filter: brightness(0.9);
 }
