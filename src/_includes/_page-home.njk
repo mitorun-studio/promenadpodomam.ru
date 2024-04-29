@@ -95,7 +95,7 @@ layout: _page-base.njk
 		<div class="route__content">
 			<p class="route__title">{{ route1.title }}</p>
 			<p class="route__list">
-				{% for item in route1.list %}
+				{% for item in route1.creation %}
 				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
 				{% endfor %}
 			</p>
@@ -141,7 +141,7 @@ layout: _page-base.njk
 		<div class="route__content">
 			<p class="route__title">{{ route2.title }}</p>
 			<p class="route__list">
-				{% for item in route2.list %}
+				{% for item in route2.creation %}
 				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
 				{% endfor %}
 			</p>
@@ -187,7 +187,7 @@ layout: _page-base.njk
 		<div class="route__content">
 			<p class="route__title">{{ route3.title }}</p>
 			<p class="route__list">
-				{% for item in route3.list %}
+				{% for item in route3.creation %}
 				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
 				{% endfor %}
 			</p>
@@ -228,18 +228,118 @@ layout: _page-base.njk
 
 	<!-- Маршрут №4 Грива: -->
 	<h3 class="h2" id="route4">{{ route4.heading }}</h3>
-	<div class="route-4 mb-l">
-		<p class="route-4__text">{{ route4.text }}</p>
+	<p>{{ route4.text }}</p>
+	<p>{{ route4.var1 }}</p>
+	<p>{{ route4.var2 }}</p>
+	<p>{{ route4.desc }}</p>
+	<div>
+		{% for item in route4.list %}
+		<p>{{ item.text }}</p>
+		{% endfor %}
 	</div>
+
+	<div class="route">
+		<div class="route__content">
+			<p class="route__title">{{ route4.title }}</p>
+			<p class="route__list">
+				{% for item in route4.creation %}
+				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="route__media">
+			<div class="uk-slider uk-slider--pictures" data-uk-slider="">
+				<div class="uk-slider-container">
+					<ul class="uk-slider-items pictures">
+						{% for item in route4.slider %}
+						<li class="pictures__card">
+							<img width="630" height="420" src="{{ item.img }}" alt="">
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<a class="uk-slider-left" href data-uk-slider-item="previous"></a>
+				<a class="uk-slider-right" href data-uk-slider-item="next"></a>
+
+				<!-- Автоматическое создание пагинации: -->
+				{# <ul class="uk-slider-nav"></ul> #}
+			</div>
+
+
+			<div class="route__audio">
+				<button class="audio" type="button" data-soundist="{{ route4.audio }}" data-pause data-volume="27" aria-labelledby="voice-1">
+					{% include "_block-audio-svg.njk" %}
+				</button>
+
+				<p id="voice-1">{{ route4.audioText }}</p>
+			</div>
+		</div>
+	</div>
+
+	<a class="button mb-l" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ firstscreen.buttonText }}</a>
 
 
 
 
 	<!-- Маршрут №5 Овсянка: -->
 	<h3 class="h2" id="route5">{{ route5.heading }}</h3>
-	<div class="route-5 mb-l">
-		<p class="route-4__text">{{ route5.text }}</p>
+	<p>{{ route5.text }}</p>
+	<p>{{ route5.text2 }}</p>
+	<div>
+		<p>{{ route5.desc }}</p>
+		{% for item in route5.list %}
+		<p>{{ item.text }}</p>
+		{% endfor %}
 	</div>
+	<p>{{ route5.text3 }}</p>
+	<div class="sponsor">
+		<p>{{ route5.sponsor }}</p>
+		<a class="a sponsor__link" href="{{ route5.sponsorLink }}">{{ route5.sponsorText }}</a>
+	</div>
+
+	<div class="route mb-l">
+		<div class="route__content">
+			<p class="route__title">{{ route5.title }}</p>
+			<p class="route__list">
+				{% for item in route5.creation %}
+				{{ item.text + ' – ' }}<em>{{ item.name }}</em><br>
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="route__media">
+			<div class="uk-slider uk-slider--pictures" data-uk-slider="">
+				<div class="uk-slider-container">
+					<ul class="uk-slider-items pictures">
+						{% for item in route5.slider %}
+						<li class="pictures__card">
+							<img width="630" height="420" src="{{ item.img }}" alt="">
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				<a class="uk-slider-left" href data-uk-slider-item="previous"></a>
+				<a class="uk-slider-right" href data-uk-slider-item="next"></a>
+
+				<!-- Автоматическое создание пагинации: -->
+				{# <ul class="uk-slider-nav"></ul> #}
+			</div>
+
+
+			<div class="route__audio">
+				<button class="audio" type="button" data-soundist="{{ route5.audio }}" data-pause data-volume="27" aria-labelledby="voice-1">
+					{% include "_block-audio-svg.njk" %}
+				</button>
+
+				<p id="voice-1">{{ route5.audioText }}</p>
+			</div>
+		</div>
+	</div>
+
+	<a class="button mb-l" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ firstscreen.buttonText }}</a>
 
 
 
@@ -280,12 +380,6 @@ layout: _page-base.njk
 			{% for item in about.list %}
 			<p>{{ item.text + ' – ' }}<em>{{ item.name }}</em></p>
 			{% endfor %}
-
-			<p>Автор, сценарист, режиссёр спектаклей – <em>Валентина Чигрина</em></p>
-			<p>Звукорежиссёр – <em>Максим Старков</em></p>
-			<p>Корректор – <em>Василий Прокушев</em></p>
-			<p>Консультант – <em>Наталья Можайцева</em></p>
-			<p>Сайт – <em>Олег Миторун</em></p>
 		</div>
 
 
