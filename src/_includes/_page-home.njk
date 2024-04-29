@@ -230,17 +230,20 @@ layout: _page-base.njk
 	<h3 class="h2" id="route4">{{ route4.heading }}</h3>
 	<p class="route-4-text">{{ route4.text }}</p>
 	<div class="route-4-var">
-		<p>{{ route4.var1 }}</p>
-		<p>{{ route4.var2 }}</p>
-	</div>
-	<p>{{ route4.desc | safe }}</p>
-	<div>
-		{% for item in route4.list %}
-		<p>{{ item.text }}</p>
-		{% endfor %}
+		<p class="route-4-var__card">{{ route4.var1 | safe }}</p>
+		<p class="route-4-var__card">{{ route4.var2 | safe }}</p>
 	</div>
 
-	<div class="route">
+	<div class="route-4-grid">
+		<p>{{ route4.desc | safe }}</p>
+		<div class="route-4-list">
+			{% for item in route4.list %}
+			<p>{{ item.text | safe }}</p>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="route mb-m">
 		<div class="route__content">
 			<p class="route__title">{{ route4.title }}</p>
 			<p class="route__list">

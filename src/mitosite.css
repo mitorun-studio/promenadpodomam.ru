@@ -2886,7 +2886,27 @@ Slide Animation (Used in slide and push mode): */
 	}
 }
 
+.route-4-var__card {
+	padding: var(--margin-s);
+	background-color: var(--grey-lightest);
+}
 
+.route-4-grid {
+	display: grid;
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-m);
+}
+
+@media (width >= 768px) {
+	.route-4-grid {
+		grid-template-columns: 2fr 1fr;
+	}
+}
+
+.route-4-list {
+	display: grid;
+	gap: var(--margin-s);
+}
 
 
 
