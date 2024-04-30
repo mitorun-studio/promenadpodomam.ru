@@ -302,12 +302,6 @@ layout: _page-base.njk
 		{% endfor %}
 	</div>
 
-	<div class="sponsor">
-		<p class="sponsor__title">{{ route5.sponsor }}</p>
-		<a class="a sponsor__link" href="{{ route5.sponsorLink }}">{{ route5.sponsorText }}</a>
-		<img class="sponsor__img" src="{{ route5.sponsorLogo }}" alt="">
-	</div>
-
 	<div class="route mb-m">
 		<div class="route__content">
 			<p class="route__title">{{ route5.title }}</p>
@@ -348,8 +342,16 @@ layout: _page-base.njk
 		</div>
 	</div>
 
-	<p class="route-5-text">{{ route5.text3 }}</p>
-	<a class="button mb-l" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ firstscreen.buttonText }}</a>
+	<div class="button-grid mb-l">
+		<a class="button" target="_blank" rel="noopener" href="{{ _site.whatsapp }}">{{ firstscreen.buttonText }}</a>
+		<p class="route-5-text">{{ route5.text3 }}</p>
+	</div>
+
+	<div class="sponsor">
+		<p class="sponsor__title">{{ route5.sponsor }}</p>
+		<a class="a sponsor__link" href="{{ route5.sponsorLink }}">{{ route5.sponsorText }}</a>
+		<img class="sponsor__img" src="{{ route5.sponsorLogo }}" alt="">
+	</div>
 
 
 

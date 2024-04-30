@@ -192,8 +192,8 @@ route2:
       name: Надежда Кармаева
     - text: Фритьоф Нансен
       name: Андрей Луговской
-    - text: ' '
-      name: Авторский стих Романа Фандорина
+    - text: Авторский стих
+      name: Роман Фандорин
     - text: Хозяйка гостиницы
       name: Мария Покровская
     - text: Губернатор Степанов
@@ -375,6 +375,12 @@ route5:
     - img: /img/route-5/route-5-1.jpg
     - img: /img/route-5/route-5-2.jpg
     - img: /img/route-5/route-5-3.jpg
+    - img: /img/route-5/route-5-4.jpg
+    - img: /img/route-5/route-5-5.jpg
+    - img: /img/route-5/route-5-6.jpg
+    - img: /img/route-5/route-5-7.jpg
+    - img: /img/route-5/route-5-8.jpg
+    - img: /img/route-5/route-5-9.jpg
   audio: /fls/route-5.aac
   audioText: Прослушать отрывок из маршрута
   buttonText: Записаться

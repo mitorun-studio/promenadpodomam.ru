@@ -2559,6 +2559,7 @@ Slide Animation (Used in slide and push mode): */
 }
 
 .route-5-grid__img {
+	width: 100%;
 	max-width: 50vw;
 }
 
@@ -2570,7 +2571,7 @@ Slide Animation (Used in slide and push mode): */
 
 .route-5-grid-2 {
 	display: grid;
-	gap: var(--margin-s);
+	gap: var(--margin-m) var(--margin-s);
 	margin-bottom: var(--margin-l);
 }
 
@@ -2592,10 +2593,44 @@ Slide Animation (Used in slide and push mode): */
 	}
 }
 
+.route-5-grid-2__text {
+	position: relative;
+	padding-left: 50px;
+}
+
+@media (width >= 576px) {
+	.route-5-grid-2__text {
+		padding-left: 64px;
+	}
+}
+
+.route-5-grid-2__text::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 36px;
+	height: 54px;
+	background-image: url('./img/route-5/check.png');
+	background-position: 0%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	/* background-color: grey; */
+	opacity: 0.34;
+}
+
+@media (width >= 576px) {
+	.route-5-grid-2__text::before {
+		width: 50px;
+		height: 75px;
+	}
+}
+
 .sponsor {
 	display: grid;
 	gap: var(--margin-s);
-	margin-bottom: var(--margin-l);
+	margin-bottom: var(--margin-xl);
 }
 
 @media (width >= 768px) {
@@ -2627,6 +2662,19 @@ Slide Animation (Used in slide and push mode): */
 @media (width >= 768px) {
 	.sponsor__img {
 		grid-area: 1/2/3/3;
+	}
+}
+
+.button-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(169px, 1fr));
+	gap: var(--margin-s);
+	align-items: start;
+}
+
+@media (width >= 576px) {
+	.button-grid {
+		grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
 	}
 }
 
