@@ -233,14 +233,14 @@ layout: _page-base.njk
 		<p class="route-4-var__card">{{ route4.var2 | safe }}</p>
 	</div>
 
-	<div class="route-4-grid">
+	{# <div class="route-4-grid">
 		<p>{{ route4.desc | safe }}</p>
 		<div class="route-4-list">
 			{% for item in route4.list %}
 			<p>{{ item.text | safe }}</p>
 			{% endfor %}
 		</div>
-	</div>
+	</div> #}
 
 	<div class="route mb-m">
 		<div class="route__content">
@@ -292,7 +292,8 @@ layout: _page-base.njk
 	<div class="route-5-grid">
 		<p class="route-5-grid__subtitle">{{ route5.text }}</p>
 		<p class="route-5-grid__text">{{ route5.text2 }}</p>
-		<img class="route-5-grid__img" src="{{ route5.img }}" alt="{{ route5.imgAlt }}">
+		{# <img class="route-5-grid__img" src="{{ route5.img }}" alt="{{ route5.imgAlt }}"> #}
+		<video class="route-5-grid__img" src="/fls/ovsyanka.webm" width="300" autoplay loop muted></video>
 	</div>
 	<div class="route-5-grid-2">
 		<p class="route-5-grid-2__title">{{ route5.desc }}</p>

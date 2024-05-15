@@ -36,8 +36,10 @@ menu:
     link: /#about
   # - text: Отзывы
   #   link: /#reviews
-  - text: ЧаВо
-    link: /#faq
+  # - text: ЧаВо
+  #   link: /#faq
+  - text: Ваши фото
+    link: https://t.me/promenad_po_domam
   - text: Записаться
     link: /#contacts
   # - text: Литературный конкурс
