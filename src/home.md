@@ -381,6 +381,7 @@ route5:
     - img: /img/route-5/route-5-7.jpg
     - img: /img/route-5/route-5-8.jpg
     - img: /img/route-5/route-5-9.jpg
+    - img: /img/route-5/route-5-10.jpg
   audio: /fls/route-5.aac
   audioText: Прослушать отрывок из маршрута
   buttonText: Записаться
