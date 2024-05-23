@@ -293,7 +293,12 @@ layout: _page-base.njk
 		<p class="route-5-grid__subtitle">{{ route5.text }}</p>
 		<p class="route-5-grid__text">{{ route5.text2 }}</p>
 		{# <img class="route-5-grid__img" src="{{ route5.img }}" alt="{{ route5.imgAlt }}"> #}
-		<video class="route-5-grid__img" src="/fls/ovsyanka.webm" width="300" autoplay loop muted></video>
+		{# <video class="route-5-grid__img" src="/fls/ovsyanka.webm" width="300" autoplay loop muted></video> #}
+		<video class="route-5-grid__img" width="500" controls autoplay loop muted>
+			<source src="/fls/ovsyanka.webm" type="video/webm">
+			<source src="/fls/ovsyanka.mp4" type="video/mp4">
+			<p>Ваш браузер не поддерживает встроенные видео, можете <a href="/fls/ovsyanka.webm">скачать это видео</a>.</p>
+		</video>
 	</div>
 	<div class="route-5-grid-2">
 		<p class="route-5-grid-2__title">{{ route5.desc }}</p>
